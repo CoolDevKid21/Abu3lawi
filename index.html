@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>كل عام وأنت بخير 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#e8c46a; --gold2:#fff0b8; --night1:#0b1230; --night2:#050816; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { margin:0; min-height:100%; background:radial-gradient(120% 90% at 50% 20%, #1c2a63, var(--night1) 55%, var(--night2)); color:#f6efe0; font-family:'Amiri','Traditional Arabic',serif; overflow-x:hidden; }
+  canvas#sky { position:fixed; inset:0; width:100%; height:100%; z-index:0; }
+  main { position:relative; z-index:1; min-height:100svh; display:grid; place-items:center; padding:28px 18px 60px; text-align:center; }
+  .wrap { width:min(92vw,560px); }
+  .moon { width:84px; height:84px; margin:0 auto 6px; border-radius:50%; box-shadow:inset -22px 0 0 0 var(--gold), 0 0 40px 6px rgba(232,196,106,.35); animation:float 5s ease-in-out infinite; transform:rotate(-20deg); }
+  @keyframes float { 50% { transform:translateY(-8px) rotate(-14deg); } }
+  h1 { font:700 clamp(40px,11vw,64px)/1.25 'Reem Kufi','Amiri',serif; margin:10px 0 0; background:linear-gradient(180deg,var(--gold2),var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 30px rgba(232,196,106,.25); }
+  .en { font:italic 400 clamp(20px,5vw,26px) 'Amiri',serif; direction:ltr; color:#d9cfb6; margin:2px 0 4px; letter-spacing:.04em; }
+  .date { display:inline-block; margin:10px 0 22px; padding:4px 18px; border:1px solid rgba(232,196,106,.5); border-radius:999px; color:var(--gold); font:500 16px 'Reem Kufi',sans-serif; direction:ltr; }
+  .orn { color:var(--gold); letter-spacing:.5em; font-size:18px; margin:6px 0; opacity:.85; }
+  #open { font:700 20px 'Reem Kufi','Amiri',serif; color:#2a1d00; background:linear-gradient(180deg,var(--gold2),var(--gold)); border:0; border-radius:999px; padding:14px 34px; cursor:pointer; box-shadow:0 10px 26px rgba(232,196,106,.3); transition:transform .15s,opacity .6s; }
+  #open:active { transform:scale(.96); } #open.gone { opacity:0; pointer-events:none; height:0; padding:0; margin:0; overflow:hidden; }
+  #gift { opacity:0; transform:translateY(14px); transition:opacity 1.2s ease, transform 1.2s ease; margin-top:6px; }
+  #gift.show { opacity:1; transform:none; }
+  .poem { margin:14px auto 0; padding:26px 18px; border-radius:20px; border:1px solid rgba(232,196,106,.35); background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)); backdrop-filter:blur(4px); font-size:clamp(20px,5.2vw,26px); line-height:1.95; }
+  .nick { font:500 clamp(20px,5.2vw,26px) 'Amiri',serif; color:var(--gold); margin:2px 0 8px; }
+  .poem .bayt { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2px 14px; padding:6px 0; border-bottom:1px solid rgba(232,196,106,.12); }
+  .poem .bayt:last-of-type { border-bottom:0; }
+  .poem .bayt i { color:var(--gold); font-style:normal; font-size:13px; opacity:.8; }
+  .poem .intro { color:var(--gold2); font-size:1.05em; margin-bottom:6px; }
+  .poem p { margin:0; opacity:0; transform:translateY(8px); transition:opacity .9s ease, transform .9s ease; } .poem p.on { opacity:1; transform:none; }
+  .poem .big { color:var(--gold2); font-weight:700; margin-top:8px; }
+  .quote { margin:22px auto 0; font-size:clamp(20px,5vw,24px); color:var(--gold2); line-height:1.9; }
+  .quote small { display:block; font-size:15px; color:#b9b09a; margin-top:2px; }
+  .sign { margin-top:20px; font:italic 400 18px 'Amiri',serif; direction:ltr; color:#d9cfb6; }
+  .hint { margin-top:16px; font-size:15px; color:#9fa7c7; }
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+<main>
+  <div class="wrap">
+    <div class="moon"></div>
+    <h1>كُلُّ عامٍ وأنتَ بخير</h1>
+    <div class="en">Happy Birthday</div>
+    <div class="date">24 · 11</div>
+    <div class="orn">✦ ✦ ✦</div>
+    <button id="open">افتح الهدية 🎁</button>
+    <div id="gift">
+      <div class="poem" id="poem">
+        <p class="bayt"><span>أَطَلَّ عِيدُكَ بِالْأَفْرَاحِ مُؤْتَلِقَا</span><i>✦</i><span>فَزَادَكَ اللَّهُ فِي أَيَّامِكَ الْأَلَقَا</span></p>
+        <p class="bayt"><span>عَامٌ جَدِيدٌ مِنَ الْأَعْمَارِ تَبْدَؤُهُ</span><i>✦</i><span>بِالْخَيْرِ وَالْيُمْنِ وَالْإِقْبَالِ مُنْطَلِقَا</span></p>
+        <p class="bayt"><span>فَاسْلَمْ وَدُمْ فِي هَنَاءٍ لَا انْقِطَاعَ لَهُ</span><i>✦</i><span>وَحَقَّقَ اللَّهُ مَا فِي النَّفْسِ قَدْ خَفَقَا</span></p>
+        <p class="bayt"><span>كُلُّ السِّنِينَ إِذَا مَرَّتْ بِطَلْعَتِكُمْ</span><i>✦</i><span>تَزْدَادُ حُسْنًا وَتُهْدِي الْعُمْرَ مَا عَبَقَا</span></p>
+        <p class="big">كلُّ عامٍ وروحُكَ أجملُ من العامِ الذي قبلَهُ ✨</p>
+      </div>
+      <div class="quote">«على قدرِ أهلِ العزمِ تأتي العزائمُ<br>وتأتي على قدرِ الكرامِ المكارمُ»<small>— المتنبي</small></div>
+      <div class="sign">Wishing you the best year yet 🎂</div>
+      <div class="hint">المس الشاشة لتتساقط الألوان</div>
+    </div>
+  </div>
+</main>
+<script>
+/* starry sky + confetti */
+const cv = document.getElementById('sky'), g = cv.getContext('2d'); let W, H, stars = [], bits = [];
+function size() { const r = devicePixelRatio || 1; W = cv.width = innerWidth * r; H = cv.height = innerHeight * r; g.setTransform(r, 0, 0, r, 0, 0); W = innerWidth; H = innerHeight;
+  stars = Array.from({ length: Math.round(W * H / 5500) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3, p: Math.random() * 6.28, s: Math.random() * 1.5 + .5 })); }
+addEventListener('resize', size); size();
+const cols = ['#e8c46a', '#fff0b8', '#ff8fb4', '#8fd3ff', '#b9ff9a', '#ffffff'];
+function burst(x, y, n = 70) { for (let i = 0; i < n; i++) { const a = Math.random() * 6.28, v = 2 + Math.random() * 6; bits.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, w: 5 + Math.random() * 6, h: 3 + Math.random() * 4, c: cols[(Math.random() * cols.length) | 0], rot: Math.random() * 6.28, vr: (Math.random() - .5) * .4, life: 0 }); } }
+let t = 0; (function loop() {
+  t += .016; g.clearRect(0, 0, W, H);
+  for (const s of stars) { g.globalAlpha = .35 + .65 * Math.abs(Math.sin(t * s.s + s.p)); g.fillStyle = '#fff8dc'; g.beginPath(); g.arc(s.x, s.y, s.r, 0, 6.28); g.fill(); }
+  for (let i = bits.length - 1; i >= 0; i--) { const b = bits[i]; b.vy += .18; b.vx *= .99; b.x += b.vx; b.y += b.vy; b.rot += b.vr; b.life++; g.globalAlpha = Math.max(0, 1 - b.life / 140);
+    g.save(); g.translate(b.x, b.y); g.rotate(b.rot); g.fillStyle = b.c; g.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); g.restore(); if (b.life > 140 || b.y > H + 20) bits.splice(i, 1); }
+  g.globalAlpha = 1; requestAnimationFrame(loop);
+})();
+addEventListener('pointerdown', (e) => burst(e.clientX, e.clientY, 40));
+/* reveal */
+document.getElementById('open').addEventListener('click', (e) => {
+  e.currentTarget.classList.add('gone'); burst(innerWidth / 2, innerHeight / 3, 140); setTimeout(() => burst(innerWidth * .2, innerHeight * .4, 60), 300); setTimeout(() => burst(innerWidth * .8, innerHeight * .4, 60), 500);
+  document.getElementById('gift').classList.add('show');
+  document.querySelectorAll('#poem p').forEach((p, i) => setTimeout(() => p.classList.add('on'), 700 + i * 900));
+});
+</script>
+</body>
+</html>
